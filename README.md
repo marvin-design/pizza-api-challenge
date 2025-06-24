@@ -29,5 +29,15 @@ A RESTful API built with Flask, SQLAlchemy, and Flask-Migrate to manage pizza re
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/pizza-restaurant-api.git
+git clone https://github.com/marvin-design/pizza-restaurant-api.git
 cd pizza-restaurant-api
+
+### 2.Install Dependencies
+pipenv install
+pipenv shell
+
+### 3. Set Environment Variables
+export FLASK_APP=server.app:create_app
+export FLASK_ENV=development
+
+
