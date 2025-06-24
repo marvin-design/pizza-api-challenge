@@ -79,13 +79,13 @@ List all restaurants
 bash
 Copy
 Edit
-curl http://localhost:5555/restaurants
+curl http://localhost:5000/restaurants
 Create a pizza association
 
 bash
 Copy
 Edit
-curl -X POST http://localhost:5555/restaurant_pizzas \
+curl -X POST http://localhost:5000/restaurant_pizzas \
   -H "Content-Type: application/json" \
   -d '{"price": 12, "pizza_id": 1, "restaurant_id": 2}'
 🧱 Models
