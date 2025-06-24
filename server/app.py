@@ -1,25 +1,25 @@
 from flask import Flask
 from flask_migrate import Migrate
-from server.models import db
-from server.config import Config
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)      
-    
+    app.config.from_object('server.config.Config')
+   
+    from server.models import db
     db.init_app(app)
-    migrate = Migrate(app, db) 
     
-    # Updated import to match the corrected blueprint name
-    from server.controllers.restaurant_controller import restaurants_bp  # Changed from restaurant_bp
-    from server.controllers.pizza_controller import pizza_bp
+   
+    from server.models.restaurant import Restaurant
+    from server.models.pizza import Pizza
+    from server.models.restaurant_pizza import RestaurantPizza
     
-    app.register_blueprint(restaurants_bp)  # Updated to match
-    app.register_blueprint(pizza_bp)
-
+    migrate = Migrate(app, db)
+    
+   
+    with app.app_context():
+        from server.controllers.restaurant_controller import restaurants_bp
+        from server.controllers.pizza_controller import pizza_bp
+        app.register_blueprint(restaurants_bp)
+        app.register_blueprint(pizza_bp)
+    
     return app
-
-app = create_app()
-
-if __name__ == "__main__":
-    app.run(port=5000)
