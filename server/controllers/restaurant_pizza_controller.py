@@ -1,4 +1,3 @@
-# server/controllers/restaurant_pizza_controller.py
 from flask import Blueprint, jsonify, request
 from server.models.restaurant_pizza import RestaurantPizza
 from server.models.restaurant import Restaurant
@@ -20,7 +19,7 @@ def create_restaurant_pizza():
     except ValueError as e:
         return jsonify({'errors': [str(e)]}), 400
     
-    # Verify pizza and restaurant exist
+    
     pizza = Pizza.query.get(data['pizza_id'])
     restaurant = Restaurant.query.get(data['restaurant_id'])
     if not pizza or not restaurant:

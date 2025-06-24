@@ -1,11 +1,10 @@
-# server/controllers/restaurant_controller.py
 from flask import Blueprint, jsonify, request
 from server.models.restaurant import Restaurant
 from server import db
 
-restaurant_bp = Blueprint('restaurant', __name__)
+restaurants_bp = Blueprint('restaurants', __name__)  # Changed from restaurant_bp to restaurants_bp
 
-@restaurant_bp.route('/restaurants', methods=['GET'])
+@restaurants_bp.route('/restaurants', methods=['GET'])
 def get_restaurants():
     restaurants = Restaurant.query.all()
     return jsonify([{
@@ -14,7 +13,7 @@ def get_restaurants():
         'address': r.address
     } for r in restaurants])
 
-@restaurant_bp.route('/restaurants/<int:id>', methods=['GET'])
+@restaurants_bp.route('/restaurants/<int:id>', methods=['GET'])
 def get_restaurant(id):
     restaurant = Restaurant.query.get(id)
     if not restaurant:
@@ -32,7 +31,7 @@ def get_restaurant(id):
         } for rp in restaurant.restaurant_pizzas]
     })
 
-@restaurant_bp.route('/restaurants/<int:id>', methods=['DELETE'])
+@restaurants_bp.route('/restaurants/<int:id>', methods=['DELETE'])
 def delete_restaurant(id):
     restaurant = Restaurant.query.get(id)
     if not restaurant:
@@ -40,4 +39,4 @@ def delete_restaurant(id):
     
     db.session.delete(restaurant)
     db.session.commit()
-    return '', 204
+    return jsonify({'message': 'Restaurant deleted successfully'}), 204
