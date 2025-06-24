@@ -120,27 +120,13 @@ Use endpoints to test your API
 
 🪪 License
 MIT License
-© 2025 Your Name
+© 2025 David Marvin
 
 yaml
 Copy
 Edit
 
----
 
-Would you like me to generate the `seed.py`, a working `create_app()` example, or sample controller/model files to go along with this `README`?
-
-
-
-
-
-
-
-
-
-
-
-Tools
 
 
 
