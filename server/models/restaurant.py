@@ -7,7 +7,7 @@ class Restaurant(db.Model):
     name = db.Column(db.String(50), unique=True, nullable=False)
     address = db.Column(db.String(255))
     
-    # Relationship - use string reference to avoid circular imports
+    
     restaurant_pizzas = db.relationship(
         'RestaurantPizza', 
         back_populates='restaurant',
