@@ -47,7 +47,7 @@ flask db upgrade
 
 5. Seed the Database
 python server/seed.py
-
+```
 🔌 API Endpoints
 📍 Restaurants
 Method	Endpoint	Description
